@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Luyện tập vong lặp 1</title>
+    </head>
+
+    <body>
+        <script src="./ex04.js"></script>
+        <!-- bài 8 -->
+        <h1>Game đoán số</h1>
+        <button onclick="starGame()">Chơi</button>
+        <script>
+            let min = parseInt(prompt("Nhập số nhỏ nhất trong khoảng bạn muốn đoán:"));
+            let max = parseInt(prompt("Nhập số lớn nhất trong khoảng bạn muốn đoán:"));
+
+            if (isNaN(min) || isNaN(max) || min >= max) {
+                alert("Vui lòng nhập khoảng số hợp lệ.");
+                return;
+            }
+
+            let secretNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+            let guess;
+            let attempts = 0;
+
+            while (guess !== secretNumber) {
+                guess = prompt('Đoán số trong khoảng từ ${min} đến ${max}:');
+                guess = parseInt(guess);
+                attempts++;
+
+                if (isNan(guess)) {
+                    alert("Vui lòng nhập một số hợp lệ.");
+
+                } else if (guess < secretNumber) {
+                    alert("Số bạn quá nhỏ. Thử lại!");
+                } else if (guess > secretNumber) {
+                    alert("Số bạn quá lớn. Thử lại!");
+                } else {
+                    alert('Chúc mừng! Bạn đã đoán trúng số ${secretNumber} sau ${attempts} lần thử.');
+                }
+            }
+        </script>
+    </body>
+
+</html>
